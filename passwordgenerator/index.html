@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+</style>
+
+
+<!-- https://randompasswordgenerator.org/ -->
+
+
+</head>
+<body>
+
+<h1>Password generator – create a secure, random passwords</h1>
+<br>
+<p>Our online random password generator helps create a strong passwords that is as secure as possible against hacking. Create complex passwords in a click!</p>
+
+
+<input type='text' id='p'/><br/>
+<input type='button' value ='generate' onclick='document.getElementById("p").value = Password.generate()'>
+
+
+
+<p class="password-length-caption">Password Length</p>
+
+<input id="opt_random_min" name="" type="number" min="3" step="1" max="15" value="12"/>
+<span>min 3</span>
+
+
+<input id="opt_random_max" name="" type="number" min="4" step="1" max="16" value="16"/>
+<span>max 16</span>
+
+<br/>
+<br/>
+
+<fieldset class="custom-checkbox">
+	<input id="opt_uppercase" type="checkbox" checked="checked">
+	<label for="opt_uppercase">Том Үсэг Оруулах: ABCDE...</label>
+	<span></span>
+</fieldset>
+
+<fieldset class="custom-checkbox">
+	<input id="opt_lowercase" type="checkbox" checked="checked">
+	<label for="opt_lowercase">Жижиг Үсэг Оруулах: abcde...</label>
+	<span></span>
+</fieldset>
+<fieldset class="custom-checkbox">
+	<input id="opt_numbers" type="checkbox" checked="checked">
+	<label for="opt_numbers">Тоо Оруулах: 12345...</label>
+	<span></span>
+</fieldset>
+
+<fieldset class="custom-checkbox">
+	<input id="opt_symbols" type="checkbox" checked="checked">
+	<label for="opt_symbols">Тэмдэгтүүд Оруулах: @#$%...</label>
+	<span></span>
+</fieldset>
+
+<br/>
+<br/>
+
+<fieldset class="custom-checkbox">
+	<input id="opt_no_amb" type="checkbox">
+	<label for="opt_no_amb">Хоёрдмол утгатайг Хасах: {} [] () /\ ' " ` ~ , ; : . &lt; &gt;</label>
+	<span></span>
+</fieldset>
+
+<fieldset class="custom-checkbox">
+	<input id="opt_no_similar" type="checkbox" checked="checked">
+	<label for="opt_no_similar">Адил Төстэйг Хасах: i,l,1,L,o,0,O</label>
+	<span></span>
+</fieldset>
+
+<fieldset class="custom-checkbox">
+	<input id="opt_autoselect" type="checkbox">
+	<label for="opt_autoselect">Auto-Select The Password</label>
+	<span></span>
+</fieldset>
+
+<fieldset class="custom-checkbox">
+	<input id="opt_save" type="checkbox" checked="checked">
+	<label for="opt_save" class="yellow">Save My Preference</label>
+	<span></span>
+</fieldset>
+
+
+<script>
+
+/***
+        |This program generates up to 16 passwords of between 3 and 16 characters in 
+        |length.
+        |
+        |You will be prompted for the values of all parameters when the program is run 
+        |- there are no command line options to memorize.
+        |
+        |The passwords can either be written to the console or to a file (pwds.txt), 
+        |or both.
+        |
+        |The passwords must contain at least one each of the following character types:
+        |   lower-case letters :  a -> z
+        |   upper-case letters :  A -> Z
+        |   digits             :  0 -> 9
+        |   other characters   :  !"#$%&'()*+,-./:;<=>?@[]^_{|}~
+        |
+        |Optionally, a seed can be set for the random generator 
+        |(any non-zero Long integer) otherwise the default seed will be used. 
+        |Even if the same seed is set, the passwords won't necessarily be exactly
+        |the same on each run as additional random shuffles are always performed.
+        |
+        |You can also specify that various sets of visually similar characters
+        |will be excluded (or not) from the passwords, namely: Il1  O0  5S  2Z
+        | 
+        |Finally, the only command line options permitted are -h and -help which
+        |will display this page and then exit.
+        |
+        |Any other command line parameters will simply be ignored and the program
+        |will be run normally.
+        |
+***/
+	var Password = {
+ 
+  _pattern : /[a-zA-Z0-9]/,
+  _length: 13,
+  _similar : /[Il1O05S2Z]/,
+  _opt_no_amb: false,
+  _opt_no_similar: true,
+  
+  _getRandomByte : function()
+  {
+    // http://caniuse.com/#feat=getrandomvalues
+    if(window.crypto && window.crypto.getRandomValues) 
+    {
+      var result = new Uint8Array(1);
+      window.crypto.getRandomValues(result);
+      return result[0];
+    }
+    else if(window.msCrypto && window.msCrypto.getRandomValues) 
+    {
+      var result = new Uint8Array(1);
+      window.msCrypto.getRandomValues(result);
+      return result[0];
+    }
+    else
+    {
+      return Math.floor(Math.random() * 256);
+    }
+  },
+  
+  generate : function()
+  {
+	// getting random length
+	this._length = this._getRand(document.getElementById("opt_random_min").value, document.getElementById("opt_random_max").value);
+
+	//console.log(document.getElementById("opt_uppercase").checked);
+	//console.log(document.getElementById("opt_lowercase").checked);
+	//console.log(document.getElementById("opt_numbers").checked);
+	//console.log(document.getElementById("opt_symbols").checked);
+
+	//console.log(document.getElementById("opt_no_amb").checked);
+	//console.log(document.getElementById("opt_no_similar").checked);
+	//console.log(document.getElementById("opt_autoselect").checked);
+	//console.log(document.getElementById("opt_save").checked);
+	
+	var passregex = "";
+	
+	if(document.getElementById("opt_uppercase").checked) {
+		passregex = passregex + "A-Z";
+	}
+	
+	if(document.getElementById("opt_lowercase").checked) {
+		passregex = passregex + "a-z";
+	}
+	
+	if(document.getElementById("opt_numbers").checked) {
+		passregex = passregex + "0-9";
+	}
+	// ! @ # $ % ^ & * _ - + = | ?
+	// {} [] () /\ ' " ` ~ , ; : . < >
+	if(document.getElementById("opt_symbols").checked) {
+		passregex = passregex + "!@#$%^&*_\\-\\+=|?{}\\[\\]/\\\\\\'\"`~,;:\\.<>";
+	}
+	if(document.getElementById("opt_no_amb").checked) {
+		//passregex = passregex + "{}\\[\\]/\\\\\\'\"`~,;:\\.<>";
+		this._opt_no_amb = true;
+	} else {
+		this._opt_no_amb = false;
+	}
+	if(document.getElementById("opt_no_similar").checked) {
+		this._opt_no_similar = true;
+	} else {
+		this._opt_no_similar = false;
+	}
+	
+	this._pattern = new RegExp('[' + passregex + ']');
+	var _pattern_of_amb = new RegExp('[' + "{}\\[\\]/\\\\\\'\"`~,;:\\.<>" + ']');
+    return Array.apply(null, {'length': this._length})
+      .map(function()
+      {
+        var result;
+        while(true) 
+        {
+          result = String.fromCharCode(this._getRandomByte());
+		  console.log(this._opt_no_similar);
+		  if(this._opt_no_similar == true && this._opt_no_amb == false) {
+			  if(!this._similar.test(result) && this._pattern.test( result))
+			  {
+				return result;
+			  }
+		  } 
+		  if(this._opt_no_similar == true && this._opt_no_amb == true) {
+			  if(!_pattern_of_amb.test(result) && !this._similar.test(result) && this._pattern.test( result))
+			  {
+				return result;
+			  }
+		  } 
+		  if(this._opt_no_similar == false && this._opt_no_amb == true) {
+			  if(!_pattern_of_amb.test(result) && this._pattern.test( result))
+			  {
+				return result;
+			  }
+		  } 
+		  if(this._opt_no_similar == false && this._opt_no_amb == false){
+			  if(this._pattern.test( result))
+			  {
+				return result;
+			  }
+		  }
+        }        
+      }, this)
+      .join('');  
+  },
+  _getRand : function(min, max){
+	var number = Math.floor(Math.random() * (+max - +min)) + +min;
+    return number;
+  }
+    
+};
+</script>
+</body>
+</html>
