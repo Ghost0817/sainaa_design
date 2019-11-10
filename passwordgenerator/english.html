@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<!-- https://randompasswordgenerator.org/ -->
+
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+		<div class="big-yellow-circle"></div>
+	</header>
+	<div class="content">
+		<div class="generator">
+			<div class="generator-top">
+				<h1>Password generator - create a secure, random passwords</h1>
+				<br>
+				<p>Our online random password generator helps create a strong passwords that is as secure as possible against hacking. Create complex passwords in a click!</p>
+				<div class="generator-top-inner">
+						<div class="password-options">
+							<p class="password-length-caption">Password Length</p>
+						
+							<div class="password-length-items">
+								<div>
+									<input id="opt_random_min" name="opt_random_min" type="number" class="option" min="3" step="1" max="15" value="12">
+									<span>min 3</span>
+								</div>
+								<div class="mdash">—</div>
+								<div>								
+									<input id="opt_random_max" name="opt_random_max" type="number" class="option" min="4" step="1" max="16" value="16">
+									<span>max 16</span>
+								</div>
+							</div>
+						</div>
+		
+						<div class="password-options">
+							<fieldset class="custom-checkbox">
+								<input id="opt_uppercase" name="opt_uppercase" type="checkbox" checked="checked">
+								<label for="opt_uppercase">Include Uppercase: ABCDE...</label>
+								<span></span>
+							</fieldset>
+							
+							<fieldset class="custom-checkbox">
+								<input id="opt_lowercase" name="opt_lowercase" type="checkbox" checked="checked">
+								<label for="opt_lowercase">Include Lowercase: abcde...</label>
+								<span></span>
+							</fieldset>
+							<fieldset class="custom-checkbox">
+								<input id="opt_numbers" name="opt_numbers" type="checkbox" checked="checked">
+								<label for="opt_numbers">Include Numbers: 12345...</label>
+								<span></span>
+							</fieldset>
+							
+							<fieldset class="custom-checkbox">
+								<input id="opt_symbols" name="opt_symbols" type="checkbox" checked="checked">
+								<label for="opt_symbols">Include Characters: @#$%...</label>
+								<span></span>
+							</fieldset>				
+						</div>
+		
+						<div class="password-options">
+							<fieldset class="custom-checkbox">
+								<input id="opt_no_amb" name="opt_no_amb" type="checkbox">
+								<label for="opt_no_amb">Exclude Ambiguous: {} [] () /\ ' " ` ~ , ; : . &lt; &gt;</label>
+								<span></span>
+							</fieldset>
+							
+							<fieldset class="custom-checkbox">
+								<input id="opt_no_similar" name="opt_no_similar" type="checkbox" checked="checked">
+								<label for="opt_no_similar">Exclude Similar: i,l,1,L,o,0,O</label>
+								<span></span>
+							</fieldset>
+							
+							<fieldset class="custom-checkbox">
+								<input id="opt_autoselect" name="opt_autoselect" type="checkbox">
+								<label for="opt_autoselect">Auto-Select The Password</label>
+								<span></span>
+							</fieldset>
+							
+							<fieldset class="custom-checkbox">
+								<input id="opt_save" name="opt_save" type="checkbox" checked="checked">
+								<label for="opt_save" class="yellow">Save My Preference</label>
+								<span></span>
+							</fieldset>
+						</div>
+					</div>
+			</div>
+			<div class="generator-bottom">
+				<div class="btn-generate-container">
+					<button class="btn-generate" onclick='Password._init()'>Generate</button>
+				</div>
+				<div class="pass-container">
+					<input id="password" type="text" placeholder="Your new password...">
+					<button id="btnCopy">copy</button>
+					<span>or</span> 
+					<button id="btnSend">send to email</button>
+				</div>
+			</div>
+		</div>
+
+		<section class="article centered">
+			<h2 id="What-is-the-best-password-generator">How can I ever remember a random password?</h2>
+			<p class="textcenter">Good passwords are long and random. The problem lies in the fact that people do not create long random passwords badly. That is why you need password managers such as:</p>
+			<ul class="list-with-imgs">
+				<li>
+					<div class="pd-15">
+						<a href="https://www.lastpass.com/"><img src="images/lastpass.png" alt="LastPass"></a>
+						<h3><a href="https://www.lastpass.com/">LastPass</a></h3>
+						<p>LastPass remembers all your passwords, so you don't have to.</p>
+					</div>
+				</li>
+				<li>
+					<div class="pd-15">
+						<a href="https://1password.com/"><img src="images/1Password.png" alt="1Password"></a>
+						<h3><a href="https://1password.com/">1Password</a></h3>
+						<p>Save your passwords and log in to sites with a single click.</p>
+					</div>
+				</li>
+				<li>
+					<div class="pd-15">
+						<a href="https://www.dashlane.com/"><img src="images/Dashlane.png" alt="Dashlane"></a>
+						<h3><a href="https://www.dashlane.com/">Dashlane</a></h3>
+						<p>Simple way to store and fill passwords and personal information.</p>
+					</div>
+				</li>
+			</ul>
+				
+			<ul class="list-with-imgs">
+				<li>
+					<div class="pd-15">
+						<a href="https://my.norton.com/extspa/passwordmanager"><img src="images/Norton.png" alt="Norton"></a>
+						<h3><a href="https://my.norton.com/extspa/passwordmanager">Norton</a></h3>
+						<p>Creates complex passwords when you need them. </p>
+					</div>
+				</li>
+				<li>
+					<div class="pd-15">
+						<a href="https://www.roboform.com/"><img src="images/Roboform.png" alt="Roboform"></a>
+						<h3><a href="https://www.roboform.com/">Roboform</a></h3>
+						<p>You’ll never need to remember or type your passwords again.</p>
+						
+					</div>
+				</li>
+				<li>
+					<div class="pd-15">
+						<a href="https://www.stickypassword.com/"><img src="images/Sticky Password.png" alt="Sticky Password"></a>
+						<h3><a href="https://www.stickypassword.com/">Sticky Password</a></h3>
+						<p>Autofill forms in a second. Use your passwords wherever you go.</p>
+						
+					</div>
+				</li>	
+			</ul>
+				
+		</section>
+		<section class="article">
+			<img class="pd-15" src="images/icons8-faq-64.png" alt="faq">
+			<h2 id="Password-generator-FAQs">Frequently asked questions</h2>				
+			<h3>How do password generators work?</h3>
+			<p>All passwords are generated on your device / browser (here Javascript source code and tutorial), they are unique and are created once and only for you. We do not have access to them, we do not keep records and do not save what generators create. Also you can use our extensions for <a href="https://chrome.google.com/webstore/detail/random-password-generator/nglmkmdjopoappmoalnapgfefblkhhke">Google Chrome</a> and <a href="https://addons.mozilla.org/en-US/firefox/addon/random-password-generator-org/">Mozilla Firefox</a>. Also you can download the app from the <a href="https://www.microsoft.com/en-us/p/strong-random-password-generator/9nfj7dwk0dtl">Microsoft Store</a>.</p>
+			
+			<h3>Are password generators safe?</h3>
+			<p>Absolutely! All passwords created using a password generator are generated locally on your computer. They are not saved and are not transmitted anywhere. No one can see the password you create. Just remember to close this page as soon as you have generated and copied your password so that someone else will not see it.</p>
+			
+			<h3>Why should I use a password generator?</h3>
+			<p>Because people are really bad at inventing real random passwords. People often use words or numbers that mean something to them: the name of the pet, the mother’s maiden name, the birthdays of their children, the lyrics, etc. The problem is that you get passwords that are easy to guess.</p>
+		</section>
+		<section class="article centered">
+			<h2 id="What-is-the-best-password-generator">What is a Random Password Generator?</h2>
+			<p class="textcenter">Random password generator is a online application that automatically creates a random, secure passwords. Reliable generators always make passwords that meet these requirements:</p>
+			<ul class="list-with-imgs">
+				<li>
+					<div class="pd-15">
+						<img src="images/protect.png">
+						<h3>To be long and unique</h3>
+						<p>The password must contain letters, numbers, and other special symbols. Password must be at least 12 symbols long.</p>
+					</div>
+				</li>
+				<li>
+					<div class="pd-15">
+						<img src="images/quick.png">
+						<h3>Surely to use PRNG</h3>
+						<p>PRNG is a pseudo-random number generator, with the help of which a sequence of symbols, numbers and letters is formed.</p>
+					</div>
+				</li>
+				<li>
+					<div class="pd-15">
+						<img src="images/monitor.png">
+						<h3>Generate locally</h3>
+						<p>The password must be generated locally on the computer / device of the user. Actually, our service works exactly the same way.</p>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<section class="article">
+			<img class="pd-15" src="images/icons8-hint-64.png" alt="tips">
+			<h2 id="Internet-safety-tips">Useful Internet security tips</h2>
+			<ul>
+				<li>
+					<h3 id="Attach-a-mobile-phone">Attach a mobile phone</h3>
+					<p>Be sure to link your mobile phone to your account, if the service allows. At the moment, this is the most reliable way to recover a password.</p>
+				</li>
+				<li>
+					<h3 id="Include-two-factor-authentication">Include two-factor authentication</h3>
+					<p>In case the service supports this option, connect it to further protect your account.</p>
+				</li>
+				<li>
+					<h3 id="Avoid-simple-passwords">Avoid simple passwords</h3>
+					<p>Avoid short and popular passwords that consist of sequences on the keyboard (qwerty) or easily alternate (1q2w3e)</p>
+				</li>
+				<li>
+					<h3 id="Do-not-use-personal-data-in-the-password">Do not use personal data in the password</h3>
+					<p>Never use the password names of your beloved and acquaintances, phone numbers and addresses, birthdays, licenses numbers, and other personal information.</p>
+				</li>
+				<li>
+					<h3 id="Use-unique-passwords">Use unique passwords</h3>
+					<p>Create a unique password for each of your accounts and do not use it when registering with other sites.</p>
+				</li>
+				<li>
+					<h3 id="Change-the-password-periodically">Change the password periodically</h3>
+					<p>Take the habit of changing your password for critically important data at least once every three months.</p>
+				</li>
+				<li>
+					<h3 id="Use-antivirus-software">Use antivirus software</h3>
+					<p>Use the switched on antivirus on your computer and do not prevent it from updating.</p>
+				</li>
+				<li>
+					<h3 id="Do-not-allow-browsers-to-save-passwords">Do not allow browsers to save passwords</h3>
+					<p>Do not use auto save in browsers, because saved passwords in the browser are easy to identify. In addition, a person who uses your device will also have access to your account.</p>
+				</li>
+				<li>
+					<h3 id="Fake-pages-of-popular-sites">Fake pages of popular sites</h3>
+					<p>Be careful when entering your login and password on the sites, look at the address and make sure that this is the very site. At the beginning of the address you will see a confirmation that you are in a secure connection https: //.</p>
+				</li>
+				<li>
+					<h3 id="Use-an-SSL-connection">Use an SSL connection</h3>
+					<p>Do not pass important information to unprotected HTTP or FTP protocols, because information in these connections can be easily intercepted.</p>
+				</li>
+				<li>
+					<h3 id="Use-the-incognito-mode-in-your-browser">Use the incognito mode in your browser</h3>
+					<p>When you visit important for you sites, it is advisable to do it in incognito mode, so you can protect yourself from unwanted cookies and tracking.</p>
+				</li>
+				<li>
+					<h3 id="Be-more-careful-with-the-services-of-capturing-the-picture-from-the-screen">Be more careful with the services of capturing the picture from the screen</h3>
+					<p>Very often, all users of the Internet have access to screenshots made through such services.</p>
+				</li>					
+			</ul>
+		</section>
+	</div>
+	<footer>	
+		<p class="textcenter" style="color:black">RandomPasswordGenerator.org</p>			
+		<p class="textcenter" style="color:black">Copyright ©2019</p>
+	</footer>
+</div>
+
+<script>
+
+/***
+        |This program generates up to 16 passwords of between 3 and 16 characters in 
+        |length.
+        |
+        |You will be prompted for the values of all parameters when the program is run 
+        |- there are no command line options to memorize.
+        |
+        |The passwords can either be written to the console or to a file (pwds.txt), 
+        |or both.
+        |
+        |The passwords must contain at least one each of the following character types:
+        |   lower-case letters :  a -> z
+        |   upper-case letters :  A -> Z
+        |   digits             :  0 -> 9
+        |   other characters   :  !"#$%&'()*+,-./:;<=>?@[]^_{|}~
+        |
+        |Optionally, a seed can be set for the random generator 
+        |(any non-zero Long integer) otherwise the default seed will be used. 
+        |Even if the same seed is set, the passwords won't necessarily be exactly
+        |the same on each run as additional random shuffles are always performed.
+        |
+		|There are three options to create new passord.
+		|   Exclude Ambiguous    : {} [] () /\ ' " ` ~ , ; : . < >
+		|   Exclude Similar      : Il1  O0  5S  2Z
+		|   Auto Select Password : Auto select new password
+		|   Save Preference      : save to local storage
+		|
+		|
+		|
+		|
+        |You can also copy or send email the new password.
+        |
+        | 
+        |Finally, the only command line options permitted are -h and -help which
+        |will display this page and then exit.
+        |
+        |Any other command line parameters will simply be ignored and the program
+        |will be run normally.
+        |
+***/
+
+const jsonPrefence = JSON.parse(window.localStorage.getItem('preference'));
+var currentValue = false, inputValue = true;
+if(jsonPrefence !== null){
+	currentValue = jsonPrefence[9].value;
+	inputValue = document.getElementById("opt_save").checked;
+}
+
+if(currentValue) {
+	/// set values from local storage to fields
+	for(var i=0; i < jsonPrefence.length;i++) {
+		if(jsonPrefence[i].type == "checkbox") {
+			document.getElementById(jsonPrefence[i].name).checked = jsonPrefence[i].value;
+		} else {
+			document.getElementById(jsonPrefence[i].name).value = jsonPrefence[i].value;
+		}
+	}
+} else {
+	savePreference();
+}
+document.getElementById("opt_random_min").onchange =  function() {
+	if(parseInt(document.getElementById("opt_random_min").value) <= 15) {
+		if(parseInt(document.getElementById("opt_random_min").value) >= parseInt(document.getElementById("opt_random_max").value)){
+			document.getElementById("opt_random_max").value = parseInt(document.getElementById("opt_random_min").value) + 1;
+		}
+		savePreference();
+	} else {
+		document.getElementById("opt_random_min").value= "12";
+		document.getElementById("opt_random_max").value= "16";
+		return;
+	}
+	if(parseInt(document.getElementById("opt_random_min").value) < 3) {
+		document.getElementById("opt_random_min").value= "12";
+		document.getElementById("opt_random_max").value= "16";
+	}
+};
+document.getElementById("opt_random_max").onchange =  function() {
+	if(parseInt(document.getElementById("opt_random_max").value) <= 16) {
+		if(parseInt(document.getElementById("opt_random_max").value) <= parseInt(document.getElementById("opt_random_min").value)){
+			document.getElementById("opt_random_min").value = parseInt(document.getElementById("opt_random_max").value) - 1;
+		}
+	} else {
+		document.getElementById("opt_random_min").value= "15";
+		document.getElementById("opt_random_max").value= "16";
+	}
+	if(parseInt(document.getElementById("opt_random_max").value) < 4) {
+		document.getElementById("opt_random_min").value= "12";
+		document.getElementById("opt_random_max").value= "16";
+	}
+	savePreference();
+};
+
+document.getElementById("opt_uppercase").onchange =  function() { savePreference(); };
+document.getElementById("opt_lowercase").onchange =  function() { savePreference(); };
+document.getElementById("opt_numbers").onchange =  function() { savePreference(); };
+document.getElementById("opt_symbols").onchange =  function() { savePreference(); };
+
+document.getElementById("opt_no_amb").onchange =  function() { savePreference(); };
+document.getElementById("opt_no_similar").onchange =  function() { savePreference(); };
+document.getElementById("opt_autoselect").onchange =  function() { savePreference(); };
+document.getElementById("opt_save").onchange =  function() { savePreference(); };
+
+function savePreference() {
+	if(inputValue) {
+		const preference = [
+		{
+			"name": document.getElementById("opt_random_min").name,
+			"type": document.getElementById("opt_random_min").type,
+			"value": document.getElementById("opt_random_min").value,
+			"disabled": document.getElementById("opt_random_min").disabled,
+			"default": 12
+		},
+		{
+			"name": document.getElementById("opt_random_max").name,
+			"type": document.getElementById("opt_random_max").type,
+			"value": document.getElementById("opt_random_max").value,
+			"disabled": document.getElementById("opt_random_max").disabled,
+			"default": 16
+		},
+		{
+			"name": document.getElementById("opt_uppercase").name,
+			"type": document.getElementById("opt_uppercase").type,
+			"value": document.getElementById("opt_uppercase").checked,
+			"disabled": document.getElementById("opt_uppercase").disabled,
+			"default": true
+		},
+		{
+			"name": document.getElementById("opt_lowercase").name,
+			"type": document.getElementById("opt_lowercase").type,
+			"value": document.getElementById("opt_lowercase").checked,
+			"disabled": document.getElementById("opt_lowercase").disabled,
+			"default": true
+		},
+		{
+			"name": document.getElementById("opt_numbers").name,
+			"type": document.getElementById("opt_numbers").type,
+			"value": document.getElementById("opt_numbers").checked,
+			"disabled": document.getElementById("opt_numbers").disabled,
+			"default": true
+		},
+		{
+			"name": document.getElementById("opt_symbols").name,
+			"type": document.getElementById("opt_symbols").type,
+			"value": document.getElementById("opt_symbols").checked,
+			"disabled": document.getElementById("opt_symbols").disabled,
+			"default": true
+		},
+		{
+			"name": document.getElementById("opt_no_amb").name,
+			"type": document.getElementById("opt_no_amb").type,
+			"value": document.getElementById("opt_no_amb").checked,
+			"disabled": document.getElementById("opt_no_amb").disabled,
+			"default": false
+		},
+		{
+			"name": document.getElementById("opt_no_similar").name,
+			"type": document.getElementById("opt_no_similar").type,
+			"value": document.getElementById("opt_no_similar").checked,
+			"disabled": document.getElementById("opt_no_similar").disabled,
+			"default": true
+		},
+		{
+			"name": document.getElementById("opt_autoselect").name,
+			"type": document.getElementById("opt_autoselect").type,
+			"value": document.getElementById("opt_autoselect").checked,
+			"disabled": document.getElementById("opt_autoselect").disabled,
+			"default": false
+		},
+		{
+			"name": document.getElementById("opt_save").name,
+			"type": document.getElementById("opt_save").type,
+			"value": document.getElementById("opt_save").checked,
+			"disabled": document.getElementById("opt_save").disabled,
+			"default": true
+		}
+		];
+		window.localStorage.setItem('preference', JSON.stringify(preference));
+	}
+}
+
+//document.getElementById("opt_save").onclick = function() { savePreference(); };
+document.getElementById("btnCopy").onclick = function() {
+	if(document.getElementById("password").value == ""){
+		//Information
+		alert('Nothing selected');	
+	} else {
+		document.getElementById("password").focus();
+		document.getElementById("password").select();
+		document.execCommand('copy');
+		alert('Copied to Clipboard');
+		deselectAll();
+	}
+};
+
+function deselectAll() {
+  var element = document.activeElement;
+  
+  if (element && /INPUT|TEXTAREA/i.test(element.tagName)) {
+    if ('selectionStart' in element) {
+      element.selectionEnd = element.selectionStart;
+    }
+    element.blur();
+  }
+
+  if (window.getSelection) { // All browsers, except IE <=8
+    window.getSelection().removeAllRanges();
+  } else if (document.selection) { // IE <=8
+    document.selection.empty();
+  }
+};
+
+document.getElementById("btnSend").onclick = function() {
+	if(document.getElementById("password").value == ""){
+		//Information
+		alert('Nothing selected');	
+	} else {
+		var link = "mailto:me@example.com;"
+			+ "?subject=" + escape("Here is your new password")
+			+ "&body=" + encodeURIComponent(
+			"\r\n"+ 
+			"----------\r\n")+ 
+			escape(document.getElementById('password').value) +
+			encodeURIComponent("\r\n----------\r\n"+ 
+			"Generated By Random Password Generator - https://localhost:8080.org/")
+		;
+
+		window.location.href = link;
+	}
+}
+
+	var Password = {
+ 
+  _pattern : /[a-zA-Z0-9]/,
+  _length: 13,
+  _similar : /[Il1O05S2Z]/,
+  _opt_no_amb: false,
+  _opt_no_similar: true,
+  _init: function(){
+	document.getElementById("password").value = this.generate();
+	if(document.getElementById("opt_autoselect").checked) {
+		document.getElementById("password").focus();
+		document.getElementById("password").select();
+	}
+  },
+  _getRandomByte : function()
+  {
+    // http://caniuse.com/#feat=getrandomvalues
+    if(window.crypto && window.crypto.getRandomValues) 
+    {
+      var result = new Uint8Array(1);
+      window.crypto.getRandomValues(result);
+      return result[0];
+    }
+    else if(window.msCrypto && window.msCrypto.getRandomValues) 
+    {
+      var result = new Uint8Array(1);
+      window.msCrypto.getRandomValues(result);
+      return result[0];
+    }
+    else
+    {
+      return Math.floor(Math.random() * 256);
+    }
+  },
+  
+  generate : function()
+  {
+	// getting random length
+	this._length = this._getRand(document.getElementById("opt_random_min").value, document.getElementById("opt_random_max").value);
+	
+	var passregex = "";
+	
+	if(document.getElementById("opt_uppercase").checked) {
+		passregex = passregex + "A-Z";
+	}
+	
+	if(document.getElementById("opt_lowercase").checked) {
+		passregex = passregex + "a-z";
+	}
+	
+	if(document.getElementById("opt_numbers").checked) {
+		passregex = passregex + "0-9";
+	}
+	// ! @ # $ % ^ & * _ - + = | ?
+	// {} [] () /\ ' " ` ~ , ; : . < >
+	if(document.getElementById("opt_symbols").checked) {
+		passregex = passregex + "!@#$%^&*_\\-\\+=|?{}\\[\\]/\\\\\\'\"`~,;:\\.<>";
+	}
+	if(document.getElementById("opt_no_amb").checked) {
+		this._opt_no_amb = true;
+	} else {
+		this._opt_no_amb = false;
+	}
+	if(document.getElementById("opt_no_similar").checked) {
+		this._opt_no_similar = true;
+	} else {
+		this._opt_no_similar = false;
+	}
+	
+	
+	this._pattern = new RegExp('[' + passregex + ']');
+	var _pattern_of_amb = new RegExp('[' + "{}\\[\\]/\\\\\\'\"`~,;:\\.<>" + ']');
+    return Array.apply(null, {'length': this._length})
+      .map(function()
+      {
+        var result;
+        while(true) 
+        {
+          result = String.fromCharCode(this._getRandomByte());
+		  console.log(this._opt_no_similar);
+		  if(this._opt_no_similar == true && this._opt_no_amb == false) {
+			  if(!this._similar.test(result) && this._pattern.test( result))
+			  {
+				return result;
+			  }
+		  } 
+		  if(this._opt_no_similar == true && this._opt_no_amb == true) {
+			  if(!_pattern_of_amb.test(result) && !this._similar.test(result) && this._pattern.test( result))
+			  {
+				return result;
+			  }
+		  } 
+		  if(this._opt_no_similar == false && this._opt_no_amb == true) {
+			  if(!_pattern_of_amb.test(result) && this._pattern.test( result))
+			  {
+				return result;
+			  }
+		  } 
+		  if(this._opt_no_similar == false && this._opt_no_amb == false){
+			  if(this._pattern.test( result))
+			  {
+				return result;
+			  }
+		  }
+        }        
+      }, this)
+      .join('');  
+  },
+  _getRand : function(min, max){
+	var number = Math.floor(Math.random() * (+max - +min)) + +min;
+    return number;
+  }
+    
+};
+</script>
+</body>
+</html>
