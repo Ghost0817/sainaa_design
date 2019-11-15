@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="js/shadowbox3/shadowbox.css">
 </head>
 <body>
     
@@ -69,7 +70,15 @@
                             </div>
                         </div>
     
-                        <div class="typing-position" id="keyboardshell" style="visibility: visible; display: block;">
+                        <div class="typing-position" id="keyboardshell" style="visibility: visible;display: inline-block;position: relative;width: 100%;">
+
+                                <object type="image/svg+xml" data="images/keyboard-ansi.svg">
+                                    fallback
+                                </object>
+                                <object type="image/svg+xml" data="images/hand-both.svg" style="position: absolute;pointer-events: none;height: 363px;top: -10px;left: 0px;opacity: 0.8;transform: translateX(55px) scale(1.55);">
+                                    fallback
+                                </object>
+
                                                         <div class="hands">
                                     <img src="/css/images/lhand_mn.png" width="166px" alt="Left Hand">
                                     <img src="/css/images/center.gif" class="whitchfinger" id="lhand" alt="Pointer" style="display: none;">
