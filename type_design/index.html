@@ -72,12 +72,15 @@
     
                         <div class="typing-position" id="keyboardshell" style="visibility: visible;display: inline-block;position: relative;width: 100%;">
 
-                                <object type="image/svg+xml" data="images/keyboard-ansi.svg">
-                                    fallback
+                                <object type="image/svg+xml" id="vkeyboardkeys" data="images/keyboard-ansi.svg" style="width: 685px;">
+                                    Your browser doesn't support SVG
                                 </object>
-                                <object type="image/svg+xml" data="images/hand-both.svg" style="position: absolute;pointer-events: none;height: 363px;top: -10px;left: 0px;opacity: 0.8;transform: translateX(55px) scale(1.55);">
-                                    fallback
+                                <object type="image/svg+xml" id="vHandPosition" data="images/hand-both.svg" style="position: absolute;pointer-events: none;height: 363px;top: -10px;left: 0px;opacity: 0.8;transform: translateX(55px) scale(1.55);">
+                                    Your browser doesn't support SVG
                                 </object>
+                        </div>
+    
+                        <div class="typing-position" id="keyboardshell">
 
                                                         <div class="hands">
                                     <img src="/css/images/lhand_mn.png" width="166px" alt="Left Hand">
@@ -260,5 +263,22 @@
                     lessonData.lefthand = 'lhand';
                     </script>
     <script type="text/javascript" src="js/lesson.js"></script>
+
+
+    <object id="svgObject" data="images/svgfile.svg" type="image/svg+xml" height="50" width="50">
+        Your browser doesn't support SVG
+        </object>
+    <script>
+        window.onload=function() {
+			// Get the Object by ID
+	var a = document.getElementById("svgObject");
+	// Get the SVG document inside the Object tag
+	var svgDoc = a.contentDocument;
+	// Get one of the SVG items by ID;
+	var svgItem = svgDoc.getElementById("svgItem");
+	// Set the colour to something else
+	svgItem.setAttribute("fill", "lime");
+}
+</script>
 </body>
 </html>

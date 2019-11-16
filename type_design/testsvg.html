@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <object id="svgObject" data="images/svgfile.svg" type="image/svg+xml">
+        Your browser doesn't support SVG
+        </object>
+    <script>
+window.onload=function() {
+	// Get the SVG document inside the Object tag
+	var svgDoc = document.getElementById("svgObject").contentDocument;
+	// Get one of the SVG items by ID;
+    var svgItem = svgDoc.getElementById("svgItem");
+    console.log(svgItem);
+	// Set the colour to something else
+	svgItem.setAttribute("fill", "lime");
+};
+</script>
+</body>
+</html>

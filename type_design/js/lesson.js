@@ -58,7 +58,6 @@ tw.lesson.prototype = {
 	righthand: null,
 
 	init: function() {
-
 		if (!this.hasInited) {
 			Ext.apply(this, lessonData);
 
@@ -327,7 +326,6 @@ tw.lesson.prototype = {
 				});
 			}
 		}
-
 		this.setCharPosition(this.exerciseText.charAt(0));
 	},
 
@@ -370,6 +368,11 @@ tw.lesson.prototype = {
 	},
 
 	setCharPosition: function(letter) {
+
+		console.log(document.getElementById('neutral-right'));
+
+console.log(this.win.Ext.fly("neutral-right"));
+
 		if (this.layout == "Keyboard") {
 			for (var i = 0; i < this.keyboardData[this.lang].length; i++) {
 					if (this.keyboardData[this.lang][i]["char"] == letter)
