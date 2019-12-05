@@ -108,6 +108,60 @@ a:active, a:hover {outline: 0;}
     border-bottom: 1px solid #e1e1e1;
 }
 
+.nav-btn.bq-nav-search-icon {
+    padding: 13px 10px;
+}
+.bq-nav-search-form {
+    display: inline-block;
+}
+.bq-tnav-right .form-search {
+    position: relative;
+    top: -1px;
+}
+.bq-search {
+    height: 30px;
+    position: relative;
+}
+.bq-search .s-btn {
+    border: 0;
+    height: 20px;
+    padding: 0 6px!important;
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    color: #4a5dce;
+    background-color: #fff;
+    font-weight: 200;
+}
+.bq-search input.search-query {
+    border-radius: 4px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    line-height: normal;
+}
+.search-query.s-fld-t.s-small {
+    width: 248px!important;
+}
+input.search-query {
+    padding-right: 14px;
+    padding-right: 4px \9;
+    padding-left: 14px;
+    padding-left: 4px \9;
+    margin-bottom: 0;
+    font-family: helvetica neue,Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0;
+    padding: 4px 14px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 1px rgba(0,0,0,.075) inset;
+    transition: border .2s linear 0,box-shadow .2s linear 0;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
 /** Ends header **/
 
 @media (min-width: 768px){

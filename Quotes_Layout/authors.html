@@ -13,6 +13,15 @@
   <div class="header">
 	<div id="bqNavBarCtrl">
 		<div class="pull-right">
+			<div class="bq-nav-search-form">
+				<form action="/search_results" class="no-border bq-no-print form-search ng-pristine ng-valid">
+					<div class="bq-search">
+						<input type="submit" class="s-btn fa-input fa fa-search" value="">
+						<input id="bq-search-input" autocapitalize="off" autocomplete="off" autocorrect="off" role="combobox" spellcheck="false" aria-expanded="false" type="text" placeholder="search" maxlength="80" name="q" class="s-fld-t input-medium search-query s-small" value="">
+					</div>
+				</form>
+			</div>
+			<a href="/search" class="nav-btn bq-nav-search-icon fadeable-tn"><i class="fa fa-search fa-fw"></i></a>
 			<a href="#" class="nav-btn member"><i class="fa fa-user"></i>
 			</a>
 			<a href="#" class="nav-btn bars"><i class="fa fa-bars"></i></a>
@@ -30,6 +39,8 @@
 				<li class="bq-ni"><a href="quote_pictures.html">Pictures</a></li>
 			</ul>
 		</nav>
+		
+		
 		<div class="right-menu acct-items hidden">
 			<div class="bq-ham-ctr">
 				<div class="bq-ni">

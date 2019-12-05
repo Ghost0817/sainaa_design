@@ -54,17 +54,22 @@
    padding: 20px;
    margin-top: 20px;
 }
+.comment-area{
+background-color: white;
+padding: 20px;
+}
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
   .grid-container {
 	  grid-template-areas:
 		'header header header header header header'
-		'right right right right right right'
 		'main main main main main main'
+		'right right right right right right'
 		'footer footer footer footer footer footer';
   
   }
+  .right-side { padding-left: 0px;}
 }
 </style>
 </head>
@@ -87,6 +92,129 @@
       <p>Some text..</p>
       <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     </div>
+	
+	<div class="comment-area">
+		<div class="comment-heading">
+			<h4>Comment</h4>
+			<div class="comment-line"></div>
+		</div>
+		
+		<ol class="comment-list">
+			<li class="comment">
+				<div class="comment-meta">
+					<img alt="" src="https://secure.gravatar.com/avatar/75d33c024600d472438b99c4711e4aca?s=32&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/75d33c024600d472438b99c4711e4aca?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">
+					<b>Kandis Yap</b>
+					<span class="says">says:</span>
+				</div>
+				<div class="comment-metadata">
+					<a href="https://www.typing.com/blog/typing-jobs/#comment-121">
+						<time datetime="2017-05-01T18:54:49-06:00">May 1, 2017 at 6:54 pm</time>
+					</a>
+				</div>
+				<div class="comment-content">
+					<p>This Web site is a refreshing way to learn typing skills. I highly recommend that everyone becomes a member.</p>
+				</div>
+				<div class="comment-reply">
+					<a href="#">Reply</a>
+				</div>
+		
+				<ol class="comment-children">
+					<li class="comment">
+						<div class="comment-meta">
+							<img alt="" src="https://secure.gravatar.com/avatar/75d33c024600d472438b99c4711e4aca?s=32&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/75d33c024600d472438b99c4711e4aca?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">
+							<b>JIll</b>
+							<span class="says">says:</span>
+						</div>
+						<div class="comment-metadata">
+							<a href="https://www.typing.com/blog/typing-jobs/#comment-121">
+								<time datetime="2017-05-01T18:54:49-06:00">August 27, 2017 at 8:45 pm</time>
+							</a>
+						</div>
+						<div class="comment-content">
+							<p>Is it really free?</p>
+						</div>
+						<div class="comment-reply">
+							<a href="#">Reply</a>
+						</div>
+						
+						
+		
+						<ol class="comment-children">
+							<li class="comment">
+								<div class="comment-meta">
+									<img alt="" src="https://secure.gravatar.com/avatar/75d33c024600d472438b99c4711e4aca?s=32&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/75d33c024600d472438b99c4711e4aca?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">
+									<b>Jerry Seinfeld</b>
+									<span class="says">says:</span>
+								</div>
+								<div class="comment-metadata">
+									<a href="https://www.typing.com/blog/typing-jobs/#comment-121">
+										<time datetime="2017-05-01T18:54:49-06:00">September 11, 2017 at 11:01 am</time>
+									</a>
+								</div>
+								<div class="comment-content">
+									<p>no</p>
+								</div>
+								<div class="comment-reply">
+									<a href="#">Reply</a>
+								</div>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+			<li class="comment">
+				<div class="comment-meta">
+					<img alt="" src="https://secure.gravatar.com/avatar/75d33c024600d472438b99c4711e4aca?s=32&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/75d33c024600d472438b99c4711e4aca?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">
+					<b>Alishba</b>
+					<span class="says">says:</span>
+				</div>
+				<div class="comment-metadata">
+					<a href="https://www.typing.com/blog/typing-jobs/#comment-121">
+						<time datetime="2017-05-01T18:54:49-06:00">May 1, 2017 at 6:54 pm</time>
+					</a>
+				</div>
+				<div class="comment-content">
+					<p>Dear Mike</br></br>your company is the best!</br>thank you for making this company</br>regards</br>Alishba</br></p>
+				</div>
+				<div class="comment-reply">
+					<a href="#">Reply</a>
+				</div>
+			</li>
+		</ol>
+		
+		<div class="comment-respond">
+			<h3 class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="#">Cancel reply</a></small></h3>
+			<form>
+				<div class="comment-notes">Your email address will not be published. Required fields are marked *</div>
+				<div class="comment-form-comment">
+					<label for="comment">Comment</label>
+					<textarea autocomplete="nope" id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required" spellcheck="false"></textarea>
+				</div>
+				<div class="comment-form-author">
+					<label for="author">Name <span class="required">*</span></label>
+					<input id="author" name="author" type="text" value="" size="30" maxlength="245" required="required">
+				</div>
+				<div class="comment-form-email">
+					<label for="email">Email <span class="required">*</span></label>
+					<input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required">
+				</div>
+				<div class="comment-form-url">
+					<label for="url">Website</label>
+					<input id="url" name="url" type="url" value="" size="30" maxlength="200">
+				</div>
+				<div class="comment-form-cookies-consent">
+					<input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes">
+					<label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
+				</div>
+				<div class="form-submit">
+					<input name="submit" type="submit" id="submit" class="submit" value="Post Comment">
+					<input type="hidden" name="comment_post_ID" value="811" id="comment_post_ID">
+					<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+				</div>
+			</form>
+		</div>
+	</div>
+	
   </div>  
   <div class="right-side">
     <div class="card">
